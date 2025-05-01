@@ -40,6 +40,16 @@ class UsersTable extends Table
         $this->setTable('users');
         $this->setDisplayField('fullname');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('Jobs', [
+            'foreignKey' => 'job_id',
+        ]);
+        $this->belongsTo('Departments', [
+            'foreignKey' => 'departments_id',
+        ]);
+        $this->hasMany('LeaveRequests', [
+            'foreignKey' => 'user_id',
+        ]);
     }
 
     /**
@@ -50,67 +60,7 @@ class UsersTable extends Table
      */
     public function validationDefault(Validator $validator): Validator
     {
-        $validator
-            ->scalar('fullname')
-            ->maxLength('fullname', 255)
-            ->requirePresence('fullname', 'create')
-            ->notEmptyString('fullname');
-
-        $validator
-            ->email('email')
-            ->requirePresence('email', 'create')
-            ->notEmptyString('email')
-            ->add('email', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
-
-        $validator
-            ->scalar('password')
-            ->maxLength('password', 255)
-            ->requirePresence('password', 'create')
-            ->notEmptyString('password');
-
-        $validator
-            ->scalar('phone')
-            ->maxLength('phone', 20)
-            ->allowEmptyString('phone');
-
-        $validator
-            ->scalar('address')
-            ->maxLength('address', 255)
-            ->allowEmptyString('address');
-
-        $validator
-            ->integer('age')
-            ->allowEmptyString('age');
-
-        $validator
-            ->date('birthdate')
-            ->allowEmptyDate('birthdate');
-
-        $validator
-            ->scalar('profilepicture')
-            ->maxLength('profilepicture', 255)
-            ->allowEmptyString('profilepicture');
-
-        $validator
-            ->scalar('bio')
-            ->allowEmptyString('bio');
-
-        $validator
-            ->scalar('gender')
-            ->allowEmptyString('gender');
-
-        $validator
-            ->scalar('role')
-            ->allowEmptyString('role');
-
-        $validator
-            ->dateTime('created_at')
-            ->notEmptyDateTime('created_at');
-
-        $validator
-            ->dateTime('updated_at')
-            ->notEmptyDateTime('updated_at');
-
+      
         return $validator;
     }
 
@@ -124,6 +74,8 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+        $rules->add($rules->existsIn(['job_id'], 'Jobs'), ['errorField' => 'job_id']);
+        $rules->add($rules->existsIn(['departments_id'], 'Departments'), ['errorField' => 'departments_id']);
 
         return $rules;
     }

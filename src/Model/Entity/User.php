@@ -2,27 +2,29 @@
 declare(strict_types=1);
 
 namespace App\Model\Entity;
-use Authentication\PasswordHasher\DefaultPasswordHasher;
 
+use Authentication\PasswordHasher\DefaultPasswordHasher;
 use Cake\ORM\Entity;
 
 /**
  * User Entity
  *
  * @property int $id
- * @property string $fullname
- * @property string $email
- * @property string $password
- * @property string|null $phone
- * @property string|null $address
- * @property int|null $age
- * @property \Cake\I18n\Date|null $birthdate
- * @property string|null $profilepicture
- * @property string|null $bio
- * @property string|null $gender
- * @property string|null $role
- * @property \Cake\I18n\DateTime $created_at
- * @property \Cake\I18n\DateTime $updated_at
+ * @property string|null $full_name
+ * @property string|null $email
+ * @property string|null $password
+ * @property string|null $adress
+ * @property int|null $phone_number
+ * @property \Cake\I18n\DateTime|null $birth_date
+ * @property string|null $profile_picture
+ * @property \Cake\I18n\DateTime|null $created_at
+ * @property \Cake\I18n\DateTime|null $updated_at
+ * @property string|null $state
+ * @property string $gender
+ * @property \Cake\I18n\Date|null $hire_date
+ * @property int|null $job_id
+ * @property int|null $role_id
+ * @property int|null $departments_id
  */
 class User extends Entity
 {
@@ -36,19 +38,21 @@ class User extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'fullname' => true,
+        'full_name' => true,
         'email' => true,
         'password' => true,
-        'phone' => true,
-        'address' => true,
-        'age' => true,
-        'birthdate' => true,
-        'profilepicture' => true,
-        'bio' => true,
-        'gender' => true,
-        'role' => true,
+        'adress' => true,
+        'phone_number' => true,
+        'birth_date' => true,
+        'profile_picture' => true,
         'created_at' => true,
         'updated_at' => true,
+        'state' => true,
+        'gender' => true,
+        'hire_date' => true,
+        'job_id' => true,
+        'role_id' => true,
+        'departments_id' => true,
     ];
 
     /**
@@ -59,11 +63,11 @@ class User extends Entity
     protected array $_hidden = [
         'password',
     ];
-
     protected function _setPassword(string $password) : ?string
     {
         if (strlen($password) > 0) {
             return (new DefaultPasswordHasher())->hash($password);
+            
         }
         return null;
     }

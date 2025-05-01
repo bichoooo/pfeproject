@@ -1,34 +1,46 @@
-<!-- in /templates/Users/signup.php -->
-<div class="users form">
-    <?= $this->Flash->render() ?>
-    <h3>Sign Up</h3>
-    <?= $this->Form->create($user) ?>
-    <fieldset>
-        <legend><?= __('Create your account') ?></legend>
+
+   
+        <div class="header">
+            <h1>HR Portal Sign Up</h1>
+            <p>Create your account to access the HR system</p>
+        </div>
         
-        <?= $this->Form->control('fullname', ['required' => true]) ?>
-        <?= $this->Form->control('email', ['required' => true]) ?>
-        <?= $this->Form->control('password', ['required' => true, 'type' => 'password']) ?>
-        <?= $this->Form->control('phone') ?>
-        <?= $this->Form->control('address') ?>
-        <?= $this->Form->control('age') ?>
-        <?= $this->Form->control('birthdate', ['type' => 'date']) ?>
-        <?= $this->Form->control('profilepicture', ['type' => 'file']) ?>
-        <?= $this->Form->control('bio', ['type' => 'textarea']) ?>
-        <?= $this->Form->control('gender', ['type' => 'select', 'options' => ['man' => 'Man', 'woman' => 'Woman']]) ?>
-        <?= $this->Form->control('role', [
-            'type' => 'select',
-            'options' => [
-                'authenticated' => 'Authenticated',
-                'staff' => 'Staff',
-                'admin' => 'Admin'
-            ],
-            'default' => 'authenticated'
-        ]) ?>
-
-    </fieldset>
-    <?= $this->Form->submit(__('Sign Up')); ?>
-    <?= $this->Form->end() ?>
-
-    <?= $this->Html->link("Already have an account? Login here", ['action' => 'login']) ?>
-</div>
+        <?= $this->Form->create(null) ?>
+            
+        <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="fullname" id="full_name" name="full_name" required>
+            </div>
+           
+            
+            <div class="form-group">
+                <label for="email">Work Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword"  required>
+            </div>
+            
+            
+            
+            
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the Terms of Service and Privacy Policy</label>
+            </div>
+            
+            <button type="submit">Create Account</button>
+            
+            <div class="login-link">
+                Already have an account? <a href="/users">Sign in</a>
+            </div>
+            <?= $this->Form->end() ?>
+    

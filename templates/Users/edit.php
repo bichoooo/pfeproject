@@ -22,19 +22,20 @@
             <fieldset>
                 <legend><?= __('Edit User') ?></legend>
                 <?php
-                    echo $this->Form->control('fullname');
+                    echo $this->Form->control('full_name');
                     echo $this->Form->control('email');
                     echo $this->Form->control('password');
-                    echo $this->Form->control('phone');
-                    echo $this->Form->control('address');
-                    echo $this->Form->control('age');
-                    echo $this->Form->control('birthdate', ['empty' => true]);
-                    echo $this->Form->control('profilepicture');
-                    echo $this->Form->control('bio');
-                    echo $this->Form->control('gender');
-                    echo $this->Form->control('role');
+                    echo $this->Form->control('adress');
+                    echo $this->Form->control('phone_number');
+                    echo $this->Form->control('birth_date');
+                    echo $this->Form->control('profile_picture');
                     echo $this->Form->control('created_at');
                     echo $this->Form->control('updated_at');
+                    echo $this->Form->control('state');
+                    echo $this->Form->control('gender');
+                    echo $this->Form->control('hire_date', ['empty' => true]);
+                    echo $this->Form->control('job_id');
+                    echo $this->Form->control('departments_id');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>

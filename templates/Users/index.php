@@ -12,17 +12,19 @@
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('fullname') ?></th>
+                    <th><?= $this->Paginator->sort('full_name') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
-                    <th><?= $this->Paginator->sort('phone') ?></th>
-                    <th><?= $this->Paginator->sort('address') ?></th>
-                    <th><?= $this->Paginator->sort('age') ?></th>
-                    <th><?= $this->Paginator->sort('birthdate') ?></th>
-                    <th><?= $this->Paginator->sort('profilepicture') ?></th>
-                    <th><?= $this->Paginator->sort('gender') ?></th>
-                    <th><?= $this->Paginator->sort('role') ?></th>
+                    <th><?= $this->Paginator->sort('adress') ?></th>
+                    <th><?= $this->Paginator->sort('phone_number') ?></th>
+                    <th><?= $this->Paginator->sort('birth_date') ?></th>
+                    <th><?= $this->Paginator->sort('profile_picture') ?></th>
                     <th><?= $this->Paginator->sort('created_at') ?></th>
                     <th><?= $this->Paginator->sort('updated_at') ?></th>
+                    <th><?= $this->Paginator->sort('state') ?></th>
+                    <th><?= $this->Paginator->sort('gender') ?></th>
+                    <th><?= $this->Paginator->sort('hire_date') ?></th>
+                    <th><?= $this->Paginator->sort('job_id') ?></th>
+                    <th><?= $this->Paginator->sort('departments_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -30,17 +32,19 @@
                 <?php foreach ($users as $user): ?>
                 <tr>
                     <td><?= $this->Number->format($user->id) ?></td>
-                    <td><?= h($user->fullname) ?></td>
+                    <td><?= h($user->full_name) ?></td>
                     <td><?= h($user->email) ?></td>
-                    <td><?= h($user->phone) ?></td>
-                    <td><?= h($user->address) ?></td>
-                    <td><?= $user->age === null ? '' : $this->Number->format($user->age) ?></td>
-                    <td><?= h($user->birthdate) ?></td>
-                    <td><?= h($user->profilepicture) ?></td>
-                    <td><?= h($user->gender) ?></td>
-                    <td><?= h($user->role) ?></td>
+                    <td><?= h($user->adress) ?></td>
+                    <td><?= $user->phone_number === null ? '' : $this->Number->format($user->phone_number) ?></td>
+                    <td><?= h($user->birth_date) ?></td>
+                    <td><?= h($user->profile_picture) ?></td>
                     <td><?= h($user->created_at) ?></td>
                     <td><?= h($user->updated_at) ?></td>
+                    <td><?= h($user->state) ?></td>
+                    <td><?= h($user->gender) ?></td>
+                    <td><?= h($user->hire_date) ?></td>
+                    <td><?= $user->job_id === null ? '' : $this->Number->format($user->job_id) ?></td>
+                    <td><?= $user->departments_id === null ? '' : $this->Number->format($user->departments_id) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>

@@ -19,44 +19,48 @@
             <h3><?= h($user->fullname) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Fullname') ?></th>
-                    <td><?= h($user->fullname) ?></td>
+                    <th><?= __('Full Name') ?></th>
+                    <td><?= h($user->full_name) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Email') ?></th>
                     <td><?= h($user->email) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Phone') ?></th>
-                    <td><?= h($user->phone) ?></td>
+                    <th><?= __('Adress') ?></th>
+                    <td><?= h($user->adress) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Address') ?></th>
-                    <td><?= h($user->address) ?></td>
+                    <th><?= __('Profile Picture') ?></th>
+                    <td><?= h($user->profile_picture) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Profilepicture') ?></th>
-                    <td><?= h($user->profilepicture) ?></td>
+                    <th><?= __('State') ?></th>
+                    <td><?= h($user->state) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Gender') ?></th>
                     <td><?= h($user->gender) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Role') ?></th>
-                    <td><?= h($user->role) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Id') ?></th>
                     <td><?= $this->Number->format($user->id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Age') ?></th>
-                    <td><?= $user->age === null ? '' : $this->Number->format($user->age) ?></td>
+                    <th><?= __('Phone Number') ?></th>
+                    <td><?= $user->phone_number === null ? '' : $this->Number->format($user->phone_number) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Birthdate') ?></th>
-                    <td><?= h($user->birthdate) ?></td>
+                    <th><?= __('Job Id') ?></th>
+                    <td><?= $user->job_id === null ? '' : $this->Number->format($user->job_id) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Departments Id') ?></th>
+                    <td><?= $user->departments_id === null ? '' : $this->Number->format($user->departments_id) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Birth Date') ?></th>
+                    <td><?= h($user->birth_date) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Created At') ?></th>
@@ -66,13 +70,11 @@
                     <th><?= __('Updated At') ?></th>
                     <td><?= h($user->updated_at) ?></td>
                 </tr>
+                <tr>
+                    <th><?= __('Hire Date') ?></th>
+                    <td><?= h($user->hire_date) ?></td>
+                </tr>
             </table>
-            <div class="text">
-                <strong><?= __('Bio') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($user->bio)); ?>
-                </blockquote>
-            </div>
         </div>
     </div>
 </div>
